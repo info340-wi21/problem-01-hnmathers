@@ -1,0 +1,124 @@
+ FAIL  ./problem.spec.js
+  Used test-driven development
+    ✕ Used Jest to pre-test code, saved in `pretest.txt` (4 ms)
+  Source code is valid
+    ✓ HTML validates without errors (10 ms)
+    ✓ CSS validates without errors (41 ms)
+  Has required HTML
+    ✓ Specifies charset (4 ms)
+    ✓ Includes page title (2 ms)
+    ✓ Includes author metadata (2 ms)
+    ✓ Has a top-level heading
+    ✓ Has an image
+    ✓ Includes a paragraph (1 ms)
+    ✓ Includes a hyperlink in the paragraph
+    ✓ Includes a list (1 ms)
+    ✓ List has at least 3 items (1 ms)
+  Has required CSS
+    ✓ Links in local stylesheet (1 ms)
+    ✕ Body has default font size (3 ms)
+    ✕ Body has default font family (2 ms)
+    ✕ Paragraphs have specified line height (1 ms)
+    ✕ Images have constrained height (1 ms)
+    ✕ Important list item is colored (1 ms)
+
+  ● Used test-driven development › Used Jest to pre-test code, saved in `pretest.txt`
+
+    ENOENT: no such file or directory, open '/Users/maggieobrien1/Desktop/info340/problem-01-hnmathers/problem-a/pretest.txt'
+
+      16 |   test('Used Jest to pre-test code, saved in `pretest.txt`', () => {
+      17 |     const path = __dirname + '/pretest.txt'
+    > 18 |     const pretest = fs.readFileSync(path, 'utf-8');
+         |                        ^
+      19 |     expect(pretest).toMatch(/FAIL +problem-a\/problem\.spec\.js/)
+      20 |   })
+      21 | })
+
+      at Object.<anonymous> (problem-a/problem.spec.js:18:24)
+
+  ● Has required CSS › Body has default font size
+
+    expect(received).toEqual(expected) // deep equality
+
+    Expected: "16px"
+    Received: undefined
+
+      124 | 
+      125 |   test('Body has default font size', () => {
+    > 126 |     expect( $('body').css('font-size') ).toEqual('16px');
+          |                                          ^
+      127 |   })
+      128 | 
+      129 |   test('Body has default font family', () => {
+
+      at Object.<anonymous> (problem-a/problem.spec.js:126:42)
+
+  ● Has required CSS › Body has default font family
+
+    TypeError: Cannot read property 'replace' of undefined
+
+      128 | 
+      129 |   test('Body has default font family', () => {
+    > 130 |     let fontFamilySingleQuotes = ($('body').css('font-family')).replace(/"/g, '\'');
+          |                                  ^
+      131 |     expect(fontFamilySingleQuotes).toMatch(/'Helvetica Neue', *'?Helvetica'?, *'?Arial'?, *sans-serif/);
+      132 |   })
+      133 | 
+
+      at Object.<anonymous> (problem-a/problem.spec.js:130:34)
+
+  ● Has required CSS › Paragraphs have specified line height
+
+    expect(received).toEqual(expected) // deep equality
+
+    Expected: "1.5"
+    Received: undefined
+
+      134 |   test('Paragraphs have specified line height', () => {
+      135 |     let p = $('p')
+    > 136 |     expect(p.css('line-height') ).toEqual('1.5');
+          |                                   ^
+      137 |     expect(p.attr('id')).toBe(undefined); //shouldn't have id
+      138 |     expect(p.attr('class')).toBe(undefined); //shouldn't have class
+      139 |   })
+
+      at Object.<anonymous> (problem-a/problem.spec.js:136:35)
+
+  ● Has required CSS › Images have constrained height
+
+    expect(received).toEqual(expected) // deep equality
+
+    Expected: "400px"
+    Received: undefined
+
+      140 | 
+      141 |   test('Images have constrained height', () => {
+    > 142 |     expect($('img').css('max-height')).toEqual('400px');
+          |                                        ^
+      143 |   })
+      144 | 
+      145 |   test('Important list item is colored', () => {
+
+      at Object.<anonymous> (problem-a/problem.spec.js:142:40)
+
+  ● Has required CSS › Important list item is colored
+
+    expect(received).toBeDefined()
+
+    Received: undefined
+
+      146 |     let li = $('li[class]')
+      147 |     expect(li.length).toBe(1); //only one item has class
+    > 148 |     expect(li.css('color')).toBeDefined(); //that item has a color
+          |                             ^
+      149 |   });
+      150 | })
+      151 | 
+
+      at Object.<anonymous> (problem-a/problem.spec.js:148:29)
+
+Test Suites: 1 failed, 1 total
+Tests:       6 failed, 12 passed, 18 total
+Snapshots:   0 total
+Time:        5.643 s
+Ran all test suites matching /problem/i.
